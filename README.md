@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Rocket X website Authors
+Back-End: Ahmed Salah - https://github.com/toushi100
+Front-End: HassanMHK - https://github.com/HassanMHK
+
+## Libraries & Frameworks
+react-router-dom - v6.15.0
+Tailwind - v3.3.3
+Axios - v.1.5.0
+
 ## Available Scripts
 
 In the project directory, you can run:
