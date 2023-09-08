@@ -1,27 +1,11 @@
 import { Link } from "react-router-dom";
 import './styles.css';
-// const Navbar = () => {
-//     return (
-//         <>
-//             <nav className="nav-container x-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-//                 <div className="logo-container">
-//                     <Link className="market-title text-red-700" to="/">Rocket X</Link>
-//                 </div>
-//                 <div className="nav-btns-container">
-//                     <Link className="nav-link" to="/login"><button className="nav-btn">Log in</button></Link>
-//                     <Link className="nav-link" to="/register"><button className="nav-btn">Register</button></Link>
-//                 </div>
-//             </nav>
-//         </>
-//     );
-// };
-
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Log in', href: '/login', current: false },
+let navigation = [
+  { name: 'Home', href: '/', current: false },
+  { name: 'Login', href: '/login', current: false },
   { name: 'Register', href: '/register', current: false },
 ]
 
@@ -29,7 +13,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { current } = props;
+  navigation.map((page) => {
+    if(page.name === current){
+      page.current = true;
+    }
+  });
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
