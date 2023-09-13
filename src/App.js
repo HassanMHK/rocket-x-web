@@ -4,13 +4,12 @@ import Register from './pages/register';
 import Login from './pages/login';
 import Home from './pages/home';
 import NoPage from './pages/nopage';
-import Navbar from './navbar';
-import './App.css';
-import './styles.css';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
 
 function App() {
   return (
-    <>
+    <div className='min-h-screen relative'>
       <Router>
         <Routes>
           <Route path='/register' element={<Register />} />
@@ -19,7 +18,8 @@ function App() {
           <Route path="*" element={<NoPage />} />
         </Routes>
       </Router>
-    </>
+      <Footer />
+    </div>
   );
 }
 

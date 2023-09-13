@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 // import { useNavigate, Link } from 'react-router-dom';
 import '../styles.css';
-import Navbar from '../navbar';
+import Navbar from '../components/navbar';
 
 const Register = () => {
     return (
