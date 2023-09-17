@@ -9,7 +9,7 @@ import Footer from './components/footer';
 
 function App() {
   return (
-    <div className='min-h-screen relative'>
+    <div className='min-h-screen relative bg-gray-100'>
       <Router>
         <Routes>
           <Route path='/register' element={<Register />} />
