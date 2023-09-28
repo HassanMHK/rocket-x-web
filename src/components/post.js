@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector} from 'react-redux';
+import { deletePost, editPost } from '../redux/postRedux';
 
 const Post = (props) => {
-    const { title, text} = props;
-
+    const { title, text, id} = props;
     const [postsData, setpostsData] = useState(null);
     const [inputs, setInputs] = useState({});
     const [edit, setEdit] = useState(false);
-
-    useEffect(() => {
-        setpostsData({
-            title: title,
-            text: text
-        });
-    }, []);
+    const { posts } = useSelector((store) => store.posts);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -24,25 +20,29 @@ const Post = (props) => {
     }
 
     const editClick = (e) => {
+        setInputs({id: id, title: title, text: text});
         e.preventDefault();
         setEdit(true);
     }
     const deleteClick = (e) => {
         e.preventDefault();
-        const postToDelete = e.target.parentElement.parentElement.parentElement;
-        postToDelete.remove();
+        // const postToDelete = e.target.parentElement.parentElement.parentElement.parentElement;
+        // postToDelete.remove();
+        dispatch(deletePost(id));
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         if(inputs.title === undefined && inputs.text === undefined){
-            inputs.title = postsData.title;
-            inputs.text = postsData.text;
+            inputs.title = title;
+            inputs.text = text;
         }else if(inputs.title === undefined){
-            inputs.title = postsData.title;
+            inputs.title = title;
         }else if(inputs.text === undefined){
-            inputs.text = postsData.text;
+            inputs.text = text;
         }
-        setpostsData(inputs);
+        console.log("Edit: "+inputs);
+        // setpostsData(inputs);
+        dispatch(editPost({inputs, id}));
         setEdit(false);
     }
     const cancelEdit = () => {
@@ -51,18 +51,18 @@ const Post = (props) => {
 
     return (
         <div className="post-card w-full flex flex-col items-start justify-center rounded-md my-3 p-5 bg-gray-200 border border-solid border-gray-400 relative">
-            { !edit && postsData && <div>
-                <h3 className='text-2xl font-bold my-2'>{postsData.title}</h3>
-                <p className="post-text">{postsData.text}</p>
+            { !edit && posts && <div>
+                <h3 className='text-2xl font-bold my-2'>{title}</h3>
+                <p className="post-text">{text}</p>
                 <div className='mt-2 flex items-center justify-center absolute top-0 right-0 px-1 mt-2 mr-2'>
-                    <button className='h-6 bg-yellow-500 rounded px-1 text-md text-gray-50 font-bold' onClick={editClick}><span class="material-symbols-outlined">edit_square</span></button>
-                    <button className='w-6 h-6 bg-red-700 rounded text-md text-gray-50 font-bold ms-2' onClick={deleteClick}><span class="material-symbols-outlined">delete</span></button>
+                    <button className='h-6 bg-yellow-500 rounded px-1 text-md text-gray-50 font-bold' onClick={editClick}><span className="material-symbols-outlined">edit_square</span></button>
+                    <button className='w-6 h-6 bg-red-700 rounded text-md text-gray-50 font-bold ms-2' onClick={deleteClick}><span className="material-symbols-outlined">delete</span></button>
                 </div>
             </div>
             }
             { edit && <div className="post-edit w-full flex flex-col items-center justify-center">
-                <input value={inputs.title || postsData.title} className='w-full h-11 my-3 px-2 rounded-md text-md bg-gray-50 border border-solid border-gray-300' type="text" name="title" autoComplete="off" placeholder='Enter a title' required onChange={handleChange}></input>
-                <textarea value={inputs.text || postsData.text} className='w-full h-40 my-2 px-2 pt-2 rounded-md resize-none text-md bg-gray-50 border border-solid border-gray-300' name="text"
+                <input value={inputs.title} className='w-full h-11 my-3 px-2 rounded-md text-md bg-gray-50 border border-solid border-gray-300' type="text" name="title" autoComplete="off" placeholder='Enter a title' required onChange={handleChange}></input>
+                <textarea value={inputs.text} className='w-full h-40 my-2 px-2 pt-2 rounded-md resize-none text-md bg-gray-50 border border-solid border-gray-300' name="text"
                     autoComplete="off" placeholder="What's on you mind?" required rows="4" cols="50" onChange={handleChange}>
                 </textarea>
                 <div className="flex">
