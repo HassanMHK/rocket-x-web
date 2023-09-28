@@ -55,8 +55,8 @@ const Post = (props) => {
                 <h3 className='text-2xl font-bold my-2'>{postsData.title}</h3>
                 <p className="post-text">{postsData.text}</p>
                 <div className='mt-2 flex items-center justify-center absolute top-0 right-0 px-1 mt-2 mr-2'>
-                    <button className='h-6 bg-yellow-500 rounded px-1 text-md text-gray-50 font-bold' onClick={editClick}>Edit</button>
-                    <button className='w-6 h-6 bg-red-700 rounded text-md text-gray-50 font-bold ms-2' onClick={deleteClick}>X</button>
+                    <button className='h-6 bg-yellow-500 rounded px-1 text-md text-gray-50 font-bold' onClick={editClick}><span class="material-symbols-outlined">edit_square</span></button>
+                    <button className='w-6 h-6 bg-red-700 rounded text-md text-gray-50 font-bold ms-2' onClick={deleteClick}><span class="material-symbols-outlined">delete</span></button>
                 </div>
             </div>
             }

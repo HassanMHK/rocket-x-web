@@ -9,7 +9,9 @@ Front-End: HassanMHK - https://github.com/HassanMHK
 ## Libraries & Frameworks
 react-router-dom - v6.15.0\
 Tailwind - v3.3.3\
-Axios - v.1.5.0
+Axios - v.1.5.0\
+Redux Toolkit - v1.9.5\
+react-redux - v8.1.2
 
 ## Available Scripts
 
