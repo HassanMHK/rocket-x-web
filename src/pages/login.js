@@ -9,7 +9,7 @@ const Login = () => {
 
     const login = async () => {
         try {
-            const response = await axios.post(process.env.REACT_APP_SERVER+url, {email:"pojere9199@ibtrades.com", password:"123abc"}, {
+            const response = await axios.post(process.env.REACT_APP_SERVER+url, {email: process.env.REACT_APP_TESTMAIL, password: process.env.REACT_APP_TESTPASS}, {
                 headers:{
                     'Content-Type': 'application/json',
                 }

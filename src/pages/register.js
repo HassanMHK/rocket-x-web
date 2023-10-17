@@ -8,7 +8,7 @@ const Register = () => {
 
     const register = async () => {
         try {
-            const response = await axios.post(process.env.REACT_APP_SERVER+"auth/register", {email:"pojere9199@ibtrades.com", fullName:"Hassan", organizationName:"Hassanco Madrid"}, {
+            const response = await axios.post(process.env.REACT_APP_SERVER+"auth/register", {email: process.env.REACT_APP_TESTMAIL, fullName:"Hassan", organizationName:"Hassanco Madrid"}, {
                 headers:{
                     'Content-Type': 'application/json',
                 }
@@ -21,7 +21,7 @@ const Register = () => {
 
     const resendVerification = async () => {
         try {
-            const response = await axios.post(process.env.REACT_APP_SERVER+"auth/resend-verification-email", {email:"pojere9199@ibtrades.com"}, {
+            const response = await axios.post(process.env.REACT_APP_SERVER+"auth/resend-verification-email", {email: process.env.REACT_APP_TESTMAIL}, {
                 headers:{
                     'Content-Type': 'application/json',
                 }
