@@ -17,6 +17,7 @@ const Home = () => {
 
     const fetchData = async () => {
         try {
+            // const response = await axios(url);
             const response = await axios('data.json');
             const data = response.data;
             // setpostsData(data);
@@ -62,14 +63,14 @@ const Home = () => {
                 <div className='home-header w-full flex items-center justify-center h-16 bg-red-800'>
                 </div>
                 <div className='home-main h-full flex justify-center'>
-                    <div className='home-left w-1/4 h-full'>
+                    <div className='home-left hidden md:flex md:w-1/6 lg:w-1/4 h-full'>
                         <div className='new-post h-full flex flex-col items-center justify-start rounded-md m-3 p-3 bg-gray-200 border border-solid border-gray-400'>
                             <p>
-                            Contrary to pold. Rey College Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                Contrary to pold. Rey College Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
                             </p>
                         </div>
                     </div>
-                    <div className='home-center w-6/12 h-full flex flex-col items-center justify-start'>
+                    <div className='home-center sm:w-full md:w-1/2 h-full flex flex-col items-center justify-start'>
                         <div className='new-post w-11/12 h-full flex flex-col items-center justify-start rounded-md my-3 p-3 bg-gray-200 border border-solid border-gray-400 drop-shadow'>
                             <h3 className='text-2xl'>Create a new post</h3>
                             { reset && <form  className='flex flex-col items-center justify-start'>
@@ -88,7 +89,7 @@ const Home = () => {
                             })}
                         </div>
                     </div>
-                    <div className='home-left w-1/4 h-full'>
+                    <div className='home-left hidden md:flex md:w-2/6 lg:w-1/4 h-full'>
                         <div className='new-post h-full flex flex-col items-center justify-start rounded-md m-3 p-3 bg-gray-200 border border-solid border-gray-400'>
                             Contrary to pold. Rey College Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
                         </div>

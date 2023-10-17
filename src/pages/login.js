@@ -1,9 +1,25 @@
 // import { useState } from 'react';
 // import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 import '../styles.css';
 import Navbar from '../components/navbar';
+const url = "auth/login";
 
 const Login = () => {
+
+    const login = async () => {
+        try {
+            const response = await axios.post(process.env.REACT_APP_SERVER+url, {email:"pojere9199@ibtrades.com", password:"123abc"}, {
+                headers:{
+                    'Content-Type': 'application/json',
+                }
+            });
+            const data = response.data;
+        } catch (error) {
+            console.log(error.response);
+        }
+    }
+
     return (
         <>
             <Navbar current={"Login"}/>
@@ -20,7 +36,7 @@ const Login = () => {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6" action="#" method="POST">
+                <form className="space-y-6" action={process.env.REACT_APP_SERVER+url} method="POST">
                     <div>
                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                         Email address
@@ -69,6 +85,7 @@ const Login = () => {
                     </button>
                     </div>
                 </form>
+                <button className="flex w-full justify-center rounded-md bg-red-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-2" onClick={login}>Login Test</button>
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Not a member?{' '}
